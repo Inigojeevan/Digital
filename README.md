@@ -1,7 +1,7 @@
 # SOFTWARE COMPANY WEBSITE
 
 ## TECHSTACK
-  * Node.js
+  * Express
   * MongoDB
   * React
   * TailwindCSS
