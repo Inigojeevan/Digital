@@ -2,6 +2,9 @@ import mongoose from "mongoose";
 import express, { Express } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import attendanceRouter from "./routes/attendanceRouter";
+import leaveRouter from "./routes/leaveRouter";
+import clockRoutes from "./routes/clockRoutes";
 
 dotenv.config();
 const app: Express = express();
@@ -20,6 +23,11 @@ mongoose
   .connect(mongoURI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error(err, "Error connecting to MongoDB"));
+
+
+ app.use("/attendace", attendanceRouter); 
+ app.use("/leave", leaveRouter);
+ app.use("/clock", clockRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
