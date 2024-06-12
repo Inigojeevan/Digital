@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import attendanceRouter from "./routes/attendanceRouter";
 import leaveRouter from "./routes/leaveRouter";
 import clockRoutes from "./routes/clockRoutes";
+import meetingRoutes from "./routes/meetingRoutes";
 
 dotenv.config();
 const app: Express = express();
@@ -28,6 +29,7 @@ mongoose
  app.use("/attendace", attendanceRouter); 
  app.use("/leave", leaveRouter);
  app.use("/clock", clockRoutes);
+ app.use("/meetings", meetingRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
