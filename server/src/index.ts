@@ -6,6 +6,7 @@ import attendanceRouter from "./routes/attendanceRouter";
 import leaveRouter from "./routes/leaveRouter";
 import clockRoutes from "./routes/clockRoutes";
 import meetingRoutes from "./routes/meetingRoutes";
+import taskBoardRoutes from "./routes/taskBoardRoutes";
 
 dotenv.config();
 const app: Express = express();
@@ -25,11 +26,11 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error(err, "Error connecting to MongoDB"));
 
-
- app.use("/attendace", attendanceRouter); 
- app.use("/leave", leaveRouter);
- app.use("/clock", clockRoutes);
- app.use("/meetings", meetingRoutes);
+app.use("/attendace", attendanceRouter);
+app.use("/leave", leaveRouter);
+app.use("/clock", clockRoutes);
+app.use("/meetings", meetingRoutes);
+app.use("/taskboard", taskBoardRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
