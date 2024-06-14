@@ -1,40 +1,72 @@
 import React from "react";
 import styled from "styled-components";
-import uxIcon from "../assets/ux-icon.png"; // Replace with actual path
-import sharedUnderstandingIcon from "../assets/shared-understanding-icon.png"; // Replace with actual path
-import experienceIcon from "../assets/experience-icon.png"; // Replace with actual path
-import securityIcon from "../assets/security-icon.png"; // Replace with actual path
-import codeReviewIcon from "../assets/code-review-icon.png"; // Replace with actual path
-import qualityAssuranceIcon from "../assets/quality-assurance-icon.png"; // Replace with actual path
+import uxIcon from "../assets/ux-icon.png"; 
+import sharedUnderstandingIcon from "../assets/shared-understanding-icon.png"; 
+import experienceIcon from "../assets/experience-icon.png"; 
+import securityIcon from "../assets/security-icon.png"; 
+import codeReviewIcon from "../assets/code-review-icon.png"; 
+import qualityAssuranceIcon from "../assets/quality-assurance-icon.png"; 
 
 const SectionContainer = styled.div`
   padding: 2rem;
-  background-color: #e0e7ff;
+  background-color: #cadcfc;
+`;
+
+const TitleContainer = styled.div`
+  text-align: center;
+  margin-bottom: 2rem;
 `;
 
 const Title = styled.h2`
   font-size: 2rem;
-  color: #333;
+  color: white;
+  border-radius: 25px;
   text-align: center;
-  margin-bottom: 2rem;
+  background-color: #00246b;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+`;
+
+const LightText = styled.span`
+  font-weight: 300;
+  color: #f1efef;
+`;
+
+const BoldText = styled.span`
+  font-weight: bold;
 `;
 
 const CardsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Card = styled.div`
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  width: 300px;
+  padding: 1rem; 
+  width: calc(50% - 1rem); 
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-20px);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%; 
+  }
 `;
 
 const Icon = styled.img`
@@ -44,22 +76,27 @@ const Icon = styled.img`
 `;
 
 const CardTitle = styled.h3`
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   color: #007bff;
   margin-bottom: 0.5rem;
   text-align: center;
 `;
 
 const CardDescription = styled.p`
-  font-size: 1rem;
-  color: #666;
+  font-size: 1.25rem;
+  color: #1f1e1e;
   text-align: center;
 `;
 
 const DevelopmentApproachSection: React.FC = () => {
   return (
     <SectionContainer>
-      <Title>Our Design and Development Approach</Title>
+      <TitleContainer>
+        <Title>
+          <LightText>Our Design and</LightText>{" "}
+          <BoldText> <br/>Development Approach</BoldText>
+        </Title>
+      </TitleContainer>
       <CardsContainer>
         <Card>
           <Icon src={uxIcon} alt="UX Driven Engineering" />
@@ -71,7 +108,10 @@ const DevelopmentApproachSection: React.FC = () => {
           </CardDescription>
         </Card>
         <Card>
-          <Icon src={sharedUnderstandingIcon} alt="Developing Shared Understanding" />
+          <Icon
+            src={sharedUnderstandingIcon}
+            alt="Developing Shared Understanding"
+          />
           <CardTitle>Developing Shared Understanding</CardTitle>
           <CardDescription>
             Collaboratively fostering alignment and clarity among stakeholders,
@@ -88,7 +128,10 @@ const DevelopmentApproachSection: React.FC = () => {
           </CardDescription>
         </Card>
         <Card>
-          <Icon src={securityIcon} alt="Security & Intellectual Property (IP)" />
+          <Icon
+            src={securityIcon}
+            alt="Security & Intellectual Property (IP)"
+          />
           <CardTitle>Security & Intellectual Property (IP)</CardTitle>
           <CardDescription>
             Safeguarding your assets and innovations with robust security

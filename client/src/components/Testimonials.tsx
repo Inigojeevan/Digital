@@ -7,18 +7,19 @@ const testimonials = [
   {
     name: "Romeena De Silva",
     position: "Janet Cosmetics",
-    review: "Without any doubt I recommend DigitalEPCS Solutions as one of the best software and service agencies. One of the best agencies I’ve came across so far. Wouldn’t be hesitated to introduce their work to someone else.",
+    review:
+      "Without any doubt I recommend DigitalEPCS Solutions as one of the best software and service agencies. One of the best agencies I’ve came across so far. Wouldn’t be hesitated to introduce their work to someone else.",
     stars: 5,
-    image: person1, 
+    image: person1,
   },
   {
     name: "Imran Khan",
     position: "Software Engineer",
-    review: "DigitalEPCS Solutions has been instrumental in the successful completion of our project. Their expertise and dedication are unmatched.",
+    review:
+      "DigitalEPCS Solutions has been instrumental in the successful completion of our project. Their expertise and dedication are unmatched.",
     stars: 5,
-    image: person2, 
+    image: person2,
   },
-  
 ];
 
 const SectionContainer = styled.div`
@@ -26,14 +27,22 @@ const SectionContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background-color: #e0e7ff;
+  background-color: #cadcfc;
   margin-top: 3rem;
 `;
 
+const TitleContainer = styled.div`
+  background-color: #00246b;
+  color: #fff;
+  padding: 1.3rem;
+  border-radius: 25px;
+  margin-bottom: 3rem;
+  text-align: center;
+`;
+
 const Title = styled.h2`
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin: 0;
 `;
 
 const ReviewContainer = styled.div`
@@ -46,26 +55,26 @@ const ReviewContainer = styled.div`
 `;
 
 const ReviewText = styled.p`
-  font-size: 1.2rem;
-  color: #333;
+  font-size: 1.8rem;
+  color: #000000;
   margin-bottom: 1rem;
 `;
 
 const ReviewAuthor = styled.h3`
-  font-size: 1.2rem;
-  color: #007bff;
+  font-size: 1.4rem;
+  color: #00246b;
   margin-bottom: 0.5rem;
 `;
 
 const ReviewPosition = styled.p`
   font-size: 1rem;
-  color: #666;
+  color: #272727;
   margin-bottom: 1rem;
 `;
 
 const ReviewImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   margin-bottom: 1rem;
 `;
@@ -80,7 +89,7 @@ const ArrowButton = styled.button`
   background: none;
   border: none;
   font-size: 2rem;
-  color: #007bff;
+  color: #00246b;
   cursor: pointer;
 `;
 
@@ -110,7 +119,9 @@ const Testimonials: React.FC = () => {
 
   return (
     <SectionContainer>
-      <Title>Why customers love working with us</Title>
+      <TitleContainer>
+        <Title>Why customers love<br />working with us</Title>
+      </TitleContainer>
       <ReviewContainer>
         <ReviewText>{review}</ReviewText>
         <ReviewImage src={image} alt={name} />

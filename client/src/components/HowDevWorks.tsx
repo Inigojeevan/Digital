@@ -5,10 +5,10 @@ const HowDevelopmentWorks: React.FC = () => {
   return (
     <Container>
       <Title>
-        How development <Highlight>through us works</Highlight>
+        How development <Highlight><br />through us works</Highlight>
       </Title>
 
-      <Timeline>
+      <StepsContainer>
         <Step>
           <StepTitle>
             <StepNumber>#1</StepNumber> Assemble the right team
@@ -63,24 +63,23 @@ const HowDevelopmentWorks: React.FC = () => {
             than a single deadline.
           </Description>
         </Step>
-      </Timeline>
+      </StepsContainer>
     </Container>
   );
 };
 
 export default HowDevelopmentWorks;
 
-// Styled-components
 const Container = styled.div`
   padding: 40px 20px;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #e0e7ff;
+  background-color: #cadcfc;
 `;
 
 const Title = styled.h1`
   text-align: center;
-  color: #001f66;
+  color: black;
   padding: 20px 0;
   font-size: 2.5rem;
 `;
@@ -89,37 +88,10 @@ const Highlight = styled.span`
   color: #007bff;
 `;
 
-const Timeline = styled.div`
+const StepsContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  margin-top: 40px;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  &:before {
-    content: "";
-    position: absolute;
-    width: 4px;
-    height: 100%;
-    background-color: #007bff;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-
-    @media (min-width: 768px) {
-      height: 4px;
-      width: 100%;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-    }
-  }
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const Step = styled.div`
@@ -131,10 +103,10 @@ const Step = styled.div`
   width: 90%;
   max-width: 300px;
   position: relative;
-
-  @media (min-width: 768px) {
-    width: calc(33% - 20px);
-    margin: 10px;
+  transition: transform 0.3s ease-out; 
+  &:hover {
+    transform: translateY(-20px); 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); 
   }
 `;
 

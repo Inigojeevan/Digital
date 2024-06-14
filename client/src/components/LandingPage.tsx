@@ -15,29 +15,20 @@ const TextContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 3rem;
+  font-size: 4rem;
   color: #333;
 `;
 
 const Highlight = styled.span`
-  color: #d64292;
+  background: linear-gradient(90deg, #d64292, #ff6bcb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
 `;
 
 const Description = styled.p`
-  font-size: 1.2rem;
-  color: #666;
-`;
-
-const StartButton = styled.button`
-  background-color: #007bff;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  &:hover {
-    background-color: #0056b3;
-  }
+  font-size: 1.4rem;
+  color: #313030;
 `;
 
 const ImageContainer = styled.div`
@@ -55,7 +46,6 @@ const LandingPage: React.FC = () => (
         We help build and manage a team of world-class developers to bring your
         vision to life.
       </Description>
-      <StartButton>Let's get started!</StartButton>
     </TextContainer>
     <ImageContainer>
       <img src={headerImage} alt="Team" style={{ width: "100%" }} />

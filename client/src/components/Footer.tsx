@@ -1,15 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import logo from "../assets/logo.png";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTwitter,
+  FaLinkedinIn,
+} from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
     <FooterContainer>
       <FooterContent>
         <FooterSection>
-          <Logo src="/path/to/logo.png" alt="Logo" />
+          <Logo src={logo} alt="Logo" />
           <Description>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            We help build and manage a team of world-class developers to bring
+            your vision to life..
           </Description>
         </FooterSection>
         <FooterSection>
@@ -31,12 +38,20 @@ const Footer: React.FC = () => {
       </FooterContent>
       <FooterBottom>
         <SocialIcons>
-          <SocialIcon href="#"><FaFacebookF /></SocialIcon>
-          <SocialIcon href="#"><FaInstagram /></SocialIcon>
-          <SocialIcon href="#"><FaTwitter /></SocialIcon>
-          <SocialIcon href="#"><FaLinkedinIn /></SocialIcon>
+          <SocialIcon href="https://www.facebook.com">
+            <FaFacebookF />
+          </SocialIcon>
+          <SocialIcon href="https://www.instagram.com">
+            <FaInstagram />
+          </SocialIcon>
+          <SocialIcon href="https://twitter.com">
+            <FaTwitter />
+          </SocialIcon>
+          <SocialIcon href="https://www.linkedin.com">
+            <FaLinkedinIn />
+          </SocialIcon>
         </SocialIcons>
-        <Copyright>© 2023 Copyright by IK Developers. All rights reserved.</Copyright>
+        <Copyright>© 2024 Copyright by Jeevan. All rights reserved.</Copyright>
       </FooterBottom>
     </FooterContainer>
   );
