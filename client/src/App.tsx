@@ -7,6 +7,10 @@ import SoftwareDevelopmentSection from "./components/SoftwareDevelopmentSection"
 import Testimonials from "./components/Testimonials";
 import ProductsSection from "./components/ProductsSection";
 import WayOfBuilding from "./components/WayOfBuilding";
+import DevelopmentApproachSection from "./components/DevelopmentApproach";
+import TechStackSection from "./components/TechStackSection";
+import HowDevelopmentWorks from "./components/HowDevWorks";
+import Footer from "./components/Footer";
 
 const App: React.FC = () => {
   return (
@@ -19,6 +23,10 @@ const App: React.FC = () => {
       <Testimonials />
       <ProductsSection />
       <WayOfBuilding />
+      <DevelopmentApproachSection />
+      <TechStackSection />
+      <HowDevelopmentWorks />
+      <Footer />
     </>
   );
 };

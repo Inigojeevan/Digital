@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const ServicesContainer = styled.section`
   padding: 4rem 2rem;
-  background-color: #CADCFC;
+  background-color: #cadcfc;
   text-align: center;
 `;
 
@@ -51,21 +51,26 @@ const Services: React.FC = () => (
         <CardIcon>📱</CardIcon>
         <CardTitle>Mobile App Development</CardTitle>
         <CardDescription>
-          Crafting innovative mobile solutions tailored to meet your unique business needs, transforming ideas into user-friendly and engaging experiences.
+          Crafting innovative mobile solutions tailored to meet your unique
+          business needs, transforming ideas into user-friendly and engaging
+          experiences.
         </CardDescription>
       </ServiceCard>
       <ServiceCard>
         <CardIcon>💻</CardIcon>
         <CardTitle>Web Design & Development</CardTitle>
         <CardDescription>
-          Creating captivating web experiences with cutting-edge design and seamless functionality, elevating your online presence to new heights.
+          Creating captivating web experiences with cutting-edge design and
+          seamless functionality, elevating your online presence to new heights.
         </CardDescription>
       </ServiceCard>
       <ServiceCard>
         <CardIcon>🔍</CardIcon>
         <CardTitle>Software Testing Service</CardTitle>
         <CardDescription>
-          Ensuring flawless performance and reliability through comprehensive software testing, safeguarding your digital solutions with precision and expertise.
+          Ensuring flawless performance and reliability through comprehensive
+          software testing, safeguarding your digital solutions with precision
+          and expertise.
         </CardDescription>
       </ServiceCard>
     </CardContainer>

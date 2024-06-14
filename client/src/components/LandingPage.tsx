@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import headerImage from '../assets/header-image.png'; 
+import React from "react";
+import styled from "styled-components";
+import headerImage from "../assets/header-image.png";
 
 const LandingContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 4rem;
-  background-color: #CADCFC;
+  background-color: #cadcfc;
 `;
 
 const TextContainer = styled.div`
@@ -48,15 +48,17 @@ const LandingPage: React.FC = () => (
   <LandingContainer>
     <TextContainer>
       <Title>
-        Great <Highlight>Product</Highlight> is built by great <Highlight>teams</Highlight>
+        Great <Highlight>Product</Highlight> is built by great{" "}
+        <Highlight>teams</Highlight>
       </Title>
       <Description>
-        We help build and manage a team of world-class developers to bring your vision to life.
+        We help build and manage a team of world-class developers to bring your
+        vision to life.
       </Description>
       <StartButton>Let's get started!</StartButton>
     </TextContainer>
     <ImageContainer>
-      <img src={headerImage} alt="Team" style={{ width: '100%' }} />
+      <img src={headerImage} alt="Team" style={{ width: "100%" }} />
     </ImageContainer>
   </LandingContainer>
 );

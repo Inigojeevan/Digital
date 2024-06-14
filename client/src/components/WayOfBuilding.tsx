@@ -59,7 +59,6 @@ const WayOfBuilding: React.FC = () => {
 
 export default WayOfBuilding;
 
-// Styled-components
 const Container = styled.div`
   padding: 40px 20px;
   max-width: 1200px;
