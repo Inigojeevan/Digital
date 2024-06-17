@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import express, { Express } from "express";
+import express, { Express, NextFunction, Response, Request } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import attendanceRouter from "./routes/attendanceRouter";
@@ -26,11 +26,16 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error(err, "Error connecting to MongoDB"));
 
-app.use("/attendace", attendanceRouter);
+app.use("/attendance", attendanceRouter);
 app.use("/leave", leaveRouter);
 app.use("/clock", clockRoutes);
 app.use("/meetings", meetingRoutes);
 app.use("/taskboard", taskBoardRoutes);
+
+app.use((err :any, req :Request, res :Response, next :NextFunction)  => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Something went wrong" });
+})
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

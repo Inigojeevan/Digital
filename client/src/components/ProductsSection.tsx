@@ -17,7 +17,7 @@ const SectionContainer = styled.div`
 `;
 
 const TitleContainer = styled.div`
-  text-align: center; /* Center align the contents */
+  text-align: center; 
   margin-bottom: 1.5rem;
 `;
 
@@ -107,6 +107,7 @@ const ProductDescription = styled.p`
 
 const ProductsSection: React.FC = () => {
   return (
+    <section id="products">
     <SectionContainer>
       <TitleContainer>
         <Title>
@@ -154,6 +155,7 @@ const ProductsSection: React.FC = () => {
         </ProductCard>
       </ProductsContainer>
     </SectionContainer>
+    </section>
   );
 };
 

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useClerk, useUser } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
-import { Link as ScrollLink } from "react-scroll";
 import logo from "../assets/logo.png";
 
 const HeaderContainer = styled.header`
@@ -59,7 +58,7 @@ const Nav = styled.nav<{ open: boolean }>`
   }
 `;
 
-const NavLink = styled(ScrollLink)`
+const NavLink = styled(Link)`
   text-decoration: none;
   color: #333;
   font-weight: 500;
@@ -97,14 +96,10 @@ const Button = styled.button`
   }
 `;
 
-const Header: React.FC = () => {
+const ProfileHeader: React.FC = () => {
   const [navOpen, setNavOpen] = useState(false);
-  const { openSignIn, signOut } = useClerk();
+  const { signOut } = useClerk();
   const { isSignedIn, user } = useUser();
-
-  const handleLoginClick = () => {
-    openSignIn({ afterSignInUrl: window.location.href });
-  };
 
   const handleLogoutClick = () => {
     signOut();
@@ -122,51 +117,18 @@ const Header: React.FC = () => {
       </Hamburger>
       <NavContainer>
         <Nav open={navOpen}>
-          <NavLink to="about" smooth={true} duration={500}>About</NavLink>
-          <NavLink to="services" smooth={true} duration={500}>Services</NavLink>
-          <NavLink to="products" smooth={true} duration={500}>Products</NavLink>
-          {isSignedIn && (
-            <>
-              <Link to="/profile" style={{ textDecoration: 'none', color: '#333', fontWeight: '500' }}>
-                Profile
-              </Link>
-            </>
-          )}
+          <NavLink to="/timecard">Timecard</NavLink>
+          <NavLink to="/calendar">Calendar</NavLink>
+          <NavLink to="/taskboard">Taskboard</NavLink>
         </Nav>
-        {isSignedIn ? (
-          <>
-            <Button
-              onClick={handleLogoutClick}
-              style={{ display: navOpen ? "block" : "none" }}
-            >
-              Logout
-            </Button>
-            <Button
-              onClick={handleLogoutClick}
-              style={{ display: navOpen ? "none" : "block" }}
-            >
-              Logout
-            </Button>
-          </>
-        ) : (
-          <>
-            <Button
-              onClick={handleLoginClick}
-              style={{ display: navOpen ? "block" : "none" }}
-            >
-              Login
-            </Button>
-            <Button
-              onClick={handleLoginClick}
-              style={{ display: navOpen ? "none" : "block" }}
-            >
-              Login
-            </Button>
-          </>
+        {isSignedIn && (
+          <Button onClick={handleLogoutClick}>
+            Logout
+          </Button>
         )}
       </NavContainer>
     </HeaderContainer>
   );
 };
 
-export default Header;
+export default ProfileHeader;

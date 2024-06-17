@@ -3,8 +3,8 @@ import AttendanceModel from "../schema/attendanceModel";
 
 const router = express.Router();
 
-router.post("/clockIn", async (req, res) => {
-  const { employeeID } = req.body;
+router.post("/clockIn/:employeeID", async (req, res) => {
+  const { employeeID } = req.params;
   const clockInTime = new Date();
   try {
     const attendanceRecord = new AttendanceModel({
@@ -17,12 +17,13 @@ router.post("/clockIn", async (req, res) => {
     await attendanceRecord.save();
     res.status(200).json({ message: "Clocked in successfully", clockInTime });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: (error as Error).message });
   }
 });
 
-router.post("/clockOut", async (req, res) => {
-  const { employeeID } = req.body;
+router.post("/clockOut/:employeeID", async (req, res) => {
+  const { employeeID } = req.params;
   const clockOutTime = new Date();
   try {
     const attendanceRecord = await AttendanceModel.findOne({

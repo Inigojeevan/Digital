@@ -13,17 +13,17 @@ import mongodbIcon from "../assets/mongodb.png";
 const SectionContainer = styled.div`
   padding: 2rem;
   background-color: #cadcfc;
-  text-align: center; /* Center align content */
+  text-align: center;
 `;
 
 const Title = styled.h2`
-  font-size: 1.8rem; /* Reduced font size */
+  font-size: 1.8rem;
   color: white;
   background-color: #00246f;
   margin-bottom: 2rem;
-  padding: 0.5rem 1rem; /* Adjusted padding */
+  padding: 0.5rem 1rem;
   border-radius: 10px;
-  display: inline-block; /* Ensures the container fits the content */
+  display: inline-block;
 `;
 
 const LightText = styled.span`
@@ -45,6 +45,11 @@ const IconsContainer = styled.div`
 const Icon = styled.img`
   width: 120px;
   height: 120px;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1); 
+  }
 `;
 
 const techStack = [
@@ -63,7 +68,7 @@ const TechStackSection: React.FC = () => {
   return (
     <SectionContainer>
       <Title>
-        <LightText>Our</LightText> <BoldText> <br /> Tech Stack</BoldText>
+        <LightText>Our</LightText> <BoldText> <br/>Tech Stack</BoldText>
       </Title>
       <IconsContainer>
         {techStack.map((tech) => (

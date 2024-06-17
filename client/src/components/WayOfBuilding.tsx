@@ -6,6 +6,7 @@ import teamCollaboration from "../assets/colab.png";
 
 const WayOfBuilding: React.FC = () => {
   return (
+    <section id="about">
     <Container>
       <TitleContainer>
         <Title>
@@ -87,6 +88,7 @@ const WayOfBuilding: React.FC = () => {
         <Image src={teamCollaboration} alt="Team collaboration" />
       </Section>
     </Container>
+    </section>
   );
 };
 

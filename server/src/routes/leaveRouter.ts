@@ -7,7 +7,7 @@ router.get("/:employeeID", async (req, res) => {
     const {employeeID} = req.params;
     try{
         const leaveRecords = await LeaveModel.find({employeeID});
-        if(!leaveRecords){
+        if(leaveRecords.length === 0){
             const defaultLeave = 20;
             res.status(200).json({employeeID, leaveBalance: defaultLeave});
         } else {

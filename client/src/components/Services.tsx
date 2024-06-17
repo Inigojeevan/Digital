@@ -80,6 +80,7 @@ const CardDescription = styled.p`
 `;
 
 const Services: React.FC = () => (
+  <section id="services">
   <ServicesContainer>
     <Title>Services we offer</Title>
     <CardContainer>
@@ -111,6 +112,7 @@ const Services: React.FC = () => (
       </ServiceCard>
     </CardContainer>
   </ServicesContainer>
+  </section>
 );
 
 export default Services;

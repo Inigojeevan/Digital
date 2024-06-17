@@ -7,6 +7,7 @@ import {
   FaTwitter,
   FaLinkedinIn,
 } from "react-icons/fa";
+import { Link as ScrollLink } from "react-scroll";
 
 const Footer: React.FC = () => {
   return (
@@ -21,9 +22,9 @@ const Footer: React.FC = () => {
         </FooterSection>
         <FooterSection>
           <SectionTitle>Links</SectionTitle>
-          <FooterLink href="#">About Us</FooterLink>
-          <FooterLink href="#">Services</FooterLink>
-          <FooterLink href="#">Products</FooterLink>
+          <FooterLink to="about" smooth={true} duration={500}>About Us</FooterLink>
+          <FooterLink to="services" smooth={true} duration={500}>Services</FooterLink>
+          <FooterLink to="products" smooth={true} duration={500}>Products</FooterLink>
         </FooterSection>
         <FooterSection>
           <SectionTitle>Contact us</SectionTitle>
@@ -102,11 +103,12 @@ const SectionTitle = styled.h3`
   margin-bottom: 10px;
 `;
 
-const FooterLink = styled.a`
+const FooterLink = styled(ScrollLink)`
   display: block;
   color: #aab4c6;
   text-decoration: none;
   margin-bottom: 5px;
+  cursor: pointer;
 
   &:hover {
     color: white;
