@@ -75,10 +75,38 @@ const BackButton = styled.button`
   }
 `;
 
+const LeaveButton = styled.button`
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #ff1a1a;
+    transform: translateY(-3px);
+  }
+`;
+
+const LeaveInput = styled.input`
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 100px;
+  text-align: center;
+`;
+
 const AttendancePage: React.FC = () => {
   const { user } = useUser();
   const [isClockedIn, setIsClockedIn] = useState<boolean>(false);
   const [greeting, setGreeting] = useState<string>('');
+  const [leaveDays, setLeaveDays] = useState<number>(1); 
 
   useEffect(() => {
     const storedIsClockedIn = localStorage.getItem('isClockedIn');
@@ -88,7 +116,7 @@ const AttendancePage: React.FC = () => {
     } else {
       setGreeting('Let\'s get to work');
     }
-  }, []); 
+  }, []);
 
   const handleClockInOut = async () => {
     const employeeID = user?.id;
@@ -112,7 +140,24 @@ const AttendancePage: React.FC = () => {
   };
 
   const handleOnClickDashboard = () => {
-    window.location.href = "/profile";
+    window.location.href = "/timecard";
+  }
+
+  const handleLeave = async () => {
+    const employeeID = user?.id;
+    if (!employeeID) return;
+
+    try {
+      const response = await axios.post('http://localhost:3000/leave/reduce', {
+        employeeID,
+        daysTaken: leaveDays
+      });
+      alert(`Leave balance updated: ${response.data.newLeaveBalance}`);
+      window.location.href = "/timecard";
+    } catch (error) {
+      console.error(error);
+      alert('Failed to update leave balance');
+    }
   }
 
   const getCurrentTime = () => {
@@ -140,6 +185,13 @@ const AttendancePage: React.FC = () => {
         <ClockInButton onClick={handleClockInOut}>
           {isClockedIn ? 'Clock Out' : 'Clock In'}
         </ClockInButton>
+        <LeaveInput
+          type="number"
+          value={leaveDays}
+          onChange={(e) => setLeaveDays(parseInt(e.target.value))}
+          min="1"
+        />
+        <LeaveButton onClick={handleLeave}>Take Leave</LeaveButton>
         <BackButton onClick={handleOnClickDashboard}>Back to Dashboard</BackButton>
       </RightPanel>
     </Container>

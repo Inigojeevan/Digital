@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, {Document} from "mongoose";
 
-interface Leave {
+interface Leave extends Document {
     employeeID: string;
     annualLeaveBalance: Number;
 }
