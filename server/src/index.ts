@@ -27,7 +27,7 @@ mongoose
   .catch((err) => console.error(err, "Error connecting to MongoDB"));
 
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Server is up and running");
 })
 
