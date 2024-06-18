@@ -60,7 +60,6 @@ const Footer: React.FC = () => {
 
 export default Footer;
 
-// Styled-components
 const FooterContainer = styled.footer`
   background-color: #001f66;
   color: white;
