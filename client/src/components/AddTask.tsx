@@ -59,7 +59,7 @@ const AddTask: React.FC = () => {
   });
 
   const { user } = useUser();
-  const apiBaseUrl = "https://digital-epcs.vercel.app/";
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

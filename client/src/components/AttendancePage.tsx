@@ -102,7 +102,7 @@ const LeaveInput = styled.input`
   text-align: center;
 `;
 
-const apiBaseUrl = "https://digital-epcs.vercel.app/";
+const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const AttendancePage: React.FC = () => {
   const { user } = useUser();

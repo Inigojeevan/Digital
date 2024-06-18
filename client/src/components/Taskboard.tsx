@@ -141,7 +141,7 @@ interface Task {
   employeeID: string;
 }
 
-const apiBaseUrl = "https://digital-epcs.vercel.app/";
+const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const TaskBoard: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);

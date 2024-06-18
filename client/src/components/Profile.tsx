@@ -76,7 +76,7 @@ const AttendanceButton = styled.button`
   }
 `;
 
-const apiBaseUrl = "https://digital-epcs.vercel.app/";
+const apiBaseUrl = process.env.REACT_APP_API_BASE_URL ;
 
 const Profile: React.FC = () => {
   const { user } = useUser();

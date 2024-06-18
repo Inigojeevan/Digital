@@ -72,7 +72,7 @@ interface Meeting {
   time: string;
   eventName: string;
 }
-const apiBaseUrl = "https://digital-epcs.vercel.app/";
+const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const CalendarComponent: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());

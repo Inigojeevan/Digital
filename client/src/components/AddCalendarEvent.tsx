@@ -43,7 +43,7 @@ const AddEventButton = styled.button`
   }
 `;
 
-const apiBaseUrl = "https://digital-epcs.vercel.app/";
+const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const AddEventForm: React.FC = () => {
   const [date, setDate] = useState('');
