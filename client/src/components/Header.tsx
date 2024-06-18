@@ -110,7 +110,7 @@ const Button = styled.button`
 const Header: React.FC = () => {
   const [navOpen, setNavOpen] = useState(false);
   const { openSignIn, signOut } = useClerk();
-  const { isSignedIn, user } = useUser();
+  const { isSignedIn } = useUser();
 
   const handleLoginClick = () => {
     openSignIn({ afterSignInUrl: window.location.href });

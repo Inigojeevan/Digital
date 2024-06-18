@@ -99,7 +99,7 @@ const Button = styled.button`
 const ProfileHeader: React.FC = () => {
   const [navOpen, setNavOpen] = useState(false);
   const { signOut } = useClerk();
-  const { isSignedIn, user } = useUser();
+  const { isSignedIn } = useUser();
 
   const handleLogoutClick = () => {
     signOut();
