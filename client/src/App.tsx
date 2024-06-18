@@ -15,6 +15,10 @@ import HowDevelopmentWorks from "./components/HowDevWorks";
 import Footer from "./components/Footer";
 import Profile from "./components/Profile"; 
 import AttendancePage from "./components/AttendancePage";
+import TaskBoard from "./components/Taskboard";
+import AddTask from "./components/AddTask";
+import CalendarComponent from "./components/Calendar";
+import AddEventForm from "./components/AddCalendarEvent";
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -42,6 +46,10 @@ const App: React.FC = () => {
         } />
         <Route path="/profile" element={<Profile />} />
         <Route path="/attendance" element={<AttendancePage />} />
+        <Route path="/taskboard" element={<TaskBoard />} />
+        <Route path = "/taskboard/add" element = {<AddTask />} />
+        <Route path = "/calendar" element = {<CalendarComponent />} />
+        <Route path = "/calendar/addEvents" element = {<AddEventForm />} />
       </Routes>
     </>
   );
