@@ -26,6 +26,11 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error(err, "Error connecting to MongoDB"));
 
+
+app.get("/", (req, res) => {
+  res.send("Server is up and running");
+})
+
 app.use("/attendance", attendanceRouter);
 app.use("/leave", leaveRouter);
 app.use("/clock", clockRoutes);
