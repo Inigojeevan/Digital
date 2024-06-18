@@ -12,7 +12,12 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://digital-epcs-gc9p.vercel.app/",
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 //mongoDB
