@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./build/index.ts",
     "build": "tsc -p .",
-    "dev": "nodemon ./src/index.ts"
+    "dev": "nodemon ./src/index.ts",
+    "vercel-build": "echo lol"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +16,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "typescript": "^5.4.5"
-  },
+  }, 
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
