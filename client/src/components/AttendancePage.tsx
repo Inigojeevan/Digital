@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 
 const LeftPanel = styled.div`
-  background-color: #0c397e;
+  background-color: #00246b;
   color: #d5e5ff;
   flex: 1;
   display: flex;
@@ -19,7 +19,7 @@ const LeftPanel = styled.div`
 `;
 
 const RightPanel = styled.div`
-  background-color: #d5e5ff;
+  background-color: #cadcfc;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -38,27 +38,41 @@ const CurrentDate = styled.p`
 `;
 
 const Greeting = styled.h1`
-  font-size: 2rem;
+  font-size: 3rem;
 `;
 
 const ClockInButton = styled.button`
   background-color: #0c397e;
   color: #fff;
   border: none;
+  border-radius: 25px;
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   cursor: pointer;
   margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #00246b;
+    transform: translateY(-3px);
+  }
 `;
 
 const BackButton = styled.button`
   background-color: #4c4c4c;
   color: #fff;
   border: none;
+  border-radius: 25px;
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #333333;
+    transform: translateY(-3px);
+  }
 `;
 
 const AttendancePage: React.FC = () => {

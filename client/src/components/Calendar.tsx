@@ -10,9 +10,9 @@ const CalendarContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d6e9ff;
-  padding: 20px;
-  border-radius: 10px;
+  background-color: #cadcfc;
+  padding: 60px;
+  border-radius: 20px;
 `;
 
 const StyledCalendar = styled(Calendar)`
@@ -23,42 +23,46 @@ const StyledCalendar = styled(Calendar)`
   }
 
   .react-calendar__tile--now {
-    background: #1f3b72;
+    background: #00246b;
     color: white;
   }
 
   .react-calendar__tile--active {
-    background: #1f3b72;
+    background: #00246b;
     color: white;
   }
 `;
 
 const EventsList = styled.div`
   margin-top: 20px;
-  background-color: #1f3b72;
+  background-color: #00246b;
   color: white;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 25px;
   width: 100%;
   max-width: 400px;
 `;
 
 const EventItem = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  span.time {
+    font-weight: bolder;
+  }
 `;
 
 const AddEventButton = styled.button`
   padding: 10px 20px;
   margin-top: 20px;
   border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
+  border-radius: 15px;
+  background-color: black;
   color: white;
   font-size: 16px;
   cursor: pointer;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #3f3e3e;
   }
 `;
 
@@ -113,11 +117,11 @@ const CalendarComponent: React.FC = () => {
             <EventItem key={index}>
               {event.time && typeof event.time === "string" && (
                 <>
-                  {isValidTimeFormat(event.time) ? (
-                    `${formatTime(event.time)}`
-                  ) : (
-                    `Invalid time format - ${event.eventName}`
-                  )}
+                  <span className="time">
+                    {isValidTimeFormat(event.time)
+                      ? `${formatTime(event.time)}`
+                      : `Invalid time format - ${event.eventName}`}
+                  </span>
                   {" - "}
                 </>
               )}
@@ -134,9 +138,11 @@ const CalendarComponent: React.FC = () => {
     </CalendarContainer>
   );
 };
+
 const isValidTimeFormat = (time: string): boolean => {
   return /^[0-2][0-9]:[0-5][0-9]$/.test(time);
 };
+
 const formatTime = (time: string): string => {
   const [hours, minutes] = time.split(":");
   const formattedTime = `${parseInt(hours, 10) % 12 || 12}:${minutes} ${

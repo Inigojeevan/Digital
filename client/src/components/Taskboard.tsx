@@ -8,17 +8,21 @@ const TaskBoardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d6e9ff;
+  background-color: #cadcfc;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
 const SearchBar = styled.input`
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 300px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 300px;
   font-size: 16px;
 `;
 
@@ -26,20 +30,25 @@ const AddTaskButton = styled.button`
   padding: 10px 20px;
   margin-top: 20px;
   border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
+  border-radius: 20px;
+  background-color: black;
   color: white;
   font-size: 16px;
   cursor: pointer;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #474646;
   }
 `;
 
 const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
+  @media (max-width: 768px) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 `;
 
 const Thead = styled.thead`
@@ -85,7 +94,7 @@ const ActionButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #ddd;
+    background-color: #cadcfc;
   }
 `;
 
@@ -198,6 +207,11 @@ const TaskBoard: React.FC = () => {
     setSelectedTask(prevTask => prevTask ? { ...prevTask, [name]: value } : null);
   };
 
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString();
+  };
+
   return (
     <TaskBoardContainer>
       <SearchBar 
@@ -214,7 +228,7 @@ const TaskBoard: React.FC = () => {
             <Th>PROJECT</Th>
             <Th>PRIORITY</Th>
             <Th>DATE</Th>
-            <Th>OWNER</Th>
+            <Th>ID</Th>
             <Th>ACTIONS</Th>
           </Tr>
         </Thead>
@@ -227,7 +241,7 @@ const TaskBoard: React.FC = () => {
               <Td>
                 <Priority level={task.priority}>{task.priority}</Priority>
               </Td>
-              <Td>{task.date}</Td>
+              <Td>{formatDate(task.date)}</Td>
               <Td>{task.employeeID}</Td>
               <Td>
                 <ActionButton onClick={() => handleUpdate(task)}>Update</ActionButton>

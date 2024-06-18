@@ -23,7 +23,7 @@ import AddEventForm from "./components/AddCalendarEvent";
 const App: React.FC = () => {
   const location = useLocation();
 
-  const isProfileRoute = location.pathname.startsWith("/profile") || location.pathname.startsWith("/attendance") || location.pathname.startsWith("/timecard") || location.pathname.startsWith("/calendar") || location.pathname.startsWith("/taskboard");
+  const isProfileRoute = location.pathname.startsWith("/timecard") || location.pathname.startsWith("/attendance") || location.pathname.startsWith("/timecard") || location.pathname.startsWith("/calendar") || location.pathname.startsWith("/taskboard");
 
   return (
     <>
@@ -44,7 +44,7 @@ const App: React.FC = () => {
             <Footer />
           </>
         } />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/Timecard" element={<Profile />} />
         <Route path="/attendance" element={<AttendancePage />} />
         <Route path="/taskboard" element={<TaskBoard />} />
         <Route path = "/taskboard/add" element = {<AddTask />} />

@@ -117,6 +117,7 @@ const ProfileHeader: React.FC = () => {
       </Hamburger>
       <NavContainer>
         <Nav open={navOpen}>
+        <NavLink to="/">Home</NavLink>
           <NavLink to="/timecard">Timecard</NavLink>
           <NavLink to="/calendar">Calendar</NavLink>
           <NavLink to="/taskboard">Taskboard</NavLink>

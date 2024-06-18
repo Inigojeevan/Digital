@@ -9,8 +9,10 @@ const FormContainer = styled.div`
   background-color: #1f3b72;
   padding: 20px;
   border-radius: 10px;
-  width: 300px;
-  margin: 0 auto;
+  width: 80%; 
+  max-width: 600px; 
+  margin: 0 auto; 
+  margin-top: 80px; 
 `;
 
 const FormTitle = styled.h2`
@@ -30,13 +32,14 @@ const AddEventButton = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #4caf50;
+  background-color: black;
   color: white;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 20px;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #3d3c3c;
   }
 `;
 
@@ -107,9 +110,7 @@ const AddEventForm: React.FC = () => {
           placeholder="Event Name"
           required
         />
-        <AddEventButton type="submit" onClick={() => {
-            window.location.href = "/calendar"
-        }}>Add Event</AddEventButton>
+        <AddEventButton type="submit">Add Event</AddEventButton>
       </form>
     </FormContainer>
   );

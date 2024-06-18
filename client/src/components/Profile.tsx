@@ -7,7 +7,7 @@ const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #e0f2ff;
+  background-color: #cadcfc;
   padding: 2rem;
   height: 100vh;
 `;
@@ -38,6 +38,13 @@ const SummaryCard = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-width: 200px;
   max-width: 300px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-20px); 
+  }
 `;
 
 const SummaryTitle = styled.h3`

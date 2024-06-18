@@ -79,6 +79,16 @@ const Hamburger = styled.div`
   }
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  &:hover {
+    color: #0056b3; 
+  }
+`;
+
 const Button = styled.button`
   background-color: #00246b;
   color: #fff;
@@ -127,9 +137,9 @@ const Header: React.FC = () => {
           <NavLink to="products" smooth={true} duration={500}>Products</NavLink>
           {isSignedIn && (
             <>
-              <Link to="/profile" style={{ textDecoration: 'none', color: '#333', fontWeight: '500' }}>
+              <StyledLink to="/timecard">
                 Profile
-              </Link>
+              </StyledLink>
             </>
           )}
         </Nav>
