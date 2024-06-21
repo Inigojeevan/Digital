@@ -13,12 +13,6 @@ const HeaderContainer = styled.header`
   padding: 1rem 2rem;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
 `;
 
 const LogoContainer = styled.div`
@@ -26,26 +20,42 @@ const LogoContainer = styled.div`
   align-items: center;
 `;
 
-const LogoImage = styled.img`
-  margin-right: 0.5rem;
-  height: 40px; 
+const Logo = styled.div`
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
 `;
 
-const NavContainer = styled.nav<{ open: boolean }>`
+const LogoImage = styled.img`
+  margin-right: 0.5rem;
+`;
+
+const NavContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  align-items: center;
+  gap: 2rem;
 
   @media (max-width: 768px) {
-    flex-direction: ${({ open }) => (open ? "column" : "row")};
+    flex-direction: column;
+  }
+`;
+
+const Nav = styled.nav<{ open: boolean }>`
+  display: flex;
+  gap: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
     position: absolute;
-    top: 60px; 
-    right: 1rem;
+    top: 80px;
+    left: 0;
+    right: 0;
     background: white;
-    padding: 1rem;
+    padding: 2rem;
     display: ${({ open }) => (open ? "flex" : "none")};
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 10;
   }
 `;
 
@@ -57,26 +67,6 @@ const NavLink = styled(ScrollLink)`
   &:hover {
     color: #007bff;
   }
-
-  @media (max-width: 768px) {
-    text-align: center;
-    padding: 0.5rem 0;
-  }
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  cursor: pointer;
-  &:hover {
-    color: #0056b3;
-  }
-
-  @media (max-width: 768px) {
-    text-align: center;
-    padding: 0.5rem 0;
-  }
 `;
 
 const Hamburger = styled.div`
@@ -86,7 +76,16 @@ const Hamburger = styled.div`
 
   @media (max-width: 768px) {
     display: block;
-    margin-left: auto;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  &:hover {
+    color: #0056b3; 
   }
 `;
 
@@ -126,29 +125,54 @@ const Header: React.FC = () => {
     <HeaderContainer>
       <LogoContainer>
         <LogoImage src={logo} alt="Logo" />
+        <Logo>DigitalEPCS</Logo>
       </LogoContainer>
       <Hamburger onClick={() => setNavOpen(!navOpen)}>
         {navOpen ? <FaTimes /> : <FaBars />}
       </Hamburger>
-      <NavContainer open={navOpen}>
-        <NavLink to="about" smooth={true} duration={500} onClick={() => setNavOpen(false)}>
-          About
-        </NavLink>
-        <NavLink to="services" smooth={true} duration={500} onClick={() => setNavOpen(false)}>
-          Services
-        </NavLink>
-        <NavLink to="products" smooth={true} duration={500} onClick={() => setNavOpen(false)}>
-          Products
-        </NavLink>
-        {isSignedIn && (
-          <StyledLink to="/profile" onClick={() => setNavOpen(false)}>
-            Profile
-          </StyledLink>
-        )}
+      <NavContainer>
+        <Nav open={navOpen}>
+          <NavLink to="about" smooth={true} duration={500}>About</NavLink>
+          <NavLink to="services" smooth={true} duration={500}>Services</NavLink>
+          <NavLink to="products" smooth={true} duration={500}>Products</NavLink>
+          {isSignedIn && (
+            <>
+              <StyledLink to="/timecard">
+                Profile
+              </StyledLink>
+            </>
+          )}
+        </Nav>
         {isSignedIn ? (
-          <Button onClick={handleLogoutClick}>Logout</Button>
+          <>
+            <Button
+              onClick={handleLogoutClick}
+              style={{ display: navOpen ? "block" : "none" }}
+            >
+              Logout
+            </Button>
+            <Button
+              onClick={handleLogoutClick}
+              style={{ display: navOpen ? "none" : "block" }}
+            >
+              Logout
+            </Button>
+          </>
         ) : (
-          <Button onClick={handleLoginClick}>Login</Button>
+          <>
+            <Button
+              onClick={handleLoginClick}
+              style={{ display: navOpen ? "block" : "none" }}
+            >
+              Login
+            </Button>
+            <Button
+              onClick={handleLoginClick}
+              style={{ display: navOpen ? "none" : "block" }}
+            >
+              Login
+            </Button>
+          </>
         )}
       </NavContainer>
     </HeaderContainer>
