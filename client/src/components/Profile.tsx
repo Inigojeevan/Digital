@@ -76,7 +76,7 @@ const AttendanceButton = styled.button`
   }
 `;
 
-const apiBaseUrl = process.env.REACT_APP_API_BASE_URL ;
+//const apiBaseUrl = process.env.REACT_APP_API_BASE_URL ;
 
 const Profile: React.FC = () => {
   const { user } = useUser();
@@ -87,11 +87,11 @@ const Profile: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const attendanceResponse = await axios.get(`${apiBaseUrl}/attendance/${user?.id}`);
+        const attendanceResponse = await axios.get(`https://digital-epcs.vercel.app/attendance/${user?.id}`);
         console.log("Attendance Data:", attendanceResponse.data);
         setAttendanceData(attendanceResponse.data);
 
-        const leaveResponse = await axios.get(`${apiBaseUrl}/leave/${user?.id}`);
+        const leaveResponse = await axios.get(`https://digital-epcs.vercel.app/leave/${user?.id}`);
         console.log("Leave Data:", leaveResponse.data);
         setLeaveData(leaveResponse.data.leaveBalance);
 

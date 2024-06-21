@@ -102,7 +102,7 @@ const LeaveInput = styled.input`
   text-align: center;
 `;
 
-const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+//const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const AttendancePage: React.FC = () => {
   const { user } = useUser();
@@ -126,11 +126,11 @@ const AttendancePage: React.FC = () => {
 
     try {
       if (isClockedIn) {
-        const response = await axios.post(`${apiBaseUrl}/clock/clockOut/${employeeID}`);
+        const response = await axios.post(`https://digital-epcs.vercel.app/clock/clockOut/${employeeID}`);
         console.log(response.data);
         setGreeting('Let\'s get to work');
       } else {
-        const response = await axios.post(`${apiBaseUrl}/clock/clockIn/${employeeID}`);
+        const response = await axios.post(`https://digital-epcs.vercel.app/clock/clockIn/${employeeID}`);
         console.log(response.data);
         setGreeting('Bye for now!!');
       }
@@ -150,7 +150,7 @@ const AttendancePage: React.FC = () => {
     if (!employeeID) return;
 
     try {
-      const response = await axios.post(`${apiBaseUrl}/leave/reduce`, {
+      const response = await axios.post("https://digital-epcs.vercel.app/leave/reduce", {
         employeeID,
         daysTaken: leaveDays
       });

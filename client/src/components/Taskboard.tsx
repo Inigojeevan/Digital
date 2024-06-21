@@ -141,7 +141,7 @@ interface Task {
   employeeID: string;
 }
 
-const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+//const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const TaskBoard: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -154,7 +154,7 @@ const TaskBoard: React.FC = () => {
     const fetchTasks = async () => {
       if (user && user.id) {
         try {
-          const response = await fetch(`${apiBaseUrl}/taskboard/${user.id}`);
+          const response = await fetch(`https://digital-epcs.vercel.app/taskboard/${user.id}`);
           const data = await response.json();
           setTasks(data);
         } catch (error) {
@@ -177,7 +177,7 @@ const TaskBoard: React.FC = () => {
 
   const handleDelete = async (taskID: string) => {
     try {
-      await axios.delete(`${apiBaseUrl}/taskboard/delete/${user?.id}/${taskID}`);
+      await axios.delete(`https://digital-epcs.vercel.app/taskboard/delete/${user?.id}/${taskID}`);
       setTasks(tasks.filter(task => task.taskID !== taskID));
       alert('Task deleted successfully');
     } catch (error) {
@@ -195,7 +195,7 @@ const TaskBoard: React.FC = () => {
     if (!selectedTask) return;
 
     try {
-      await axios.put(`${apiBaseUrl}/taskboard/update/${user?.id}/${selectedTask.taskID}`, selectedTask);
+      await axios.put(`https://digital-epcs.vercel.app/taskboard/update/${user?.id}/${selectedTask.taskID}`, selectedTask);
       setTasks(tasks.map(task => (task.taskID === selectedTask.taskID ? selectedTask : task)));
       handleModalClose();
     } catch (error) {

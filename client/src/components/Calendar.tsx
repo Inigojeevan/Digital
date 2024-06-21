@@ -72,7 +72,7 @@ interface Meeting {
   time: string;
   eventName: string;
 }
-const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+//const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const CalendarComponent: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -85,7 +85,7 @@ const CalendarComponent: React.FC = () => {
         const formattedDate = format(selectedDate, "yyyy-MM-dd");
         try {
           const response = await fetch(
-            `${apiBaseUrl}/meetings/${user.id}/${formattedDate}`
+            `https://digital-epcs.vercel.app/meetings/${user.id}/${formattedDate}`
           );
           if (!response.ok) {
             throw new Error("Failed to fetch events");

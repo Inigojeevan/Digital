@@ -43,7 +43,7 @@ const AddEventButton = styled.button`
   }
 `;
 
-const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+//const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 const AddEventForm: React.FC = () => {
   const [date, setDate] = useState('');
@@ -63,7 +63,7 @@ const AddEventForm: React.FC = () => {
       };
 
       try {
-        const response = await fetch(`${apiBaseUrl}/meetings/add`, {
+        const response = await fetch("https://digital-epcs.vercel.app//meetings/add", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

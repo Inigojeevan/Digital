@@ -59,7 +59,6 @@ const AddTask: React.FC = () => {
   });
 
   const { user } = useUser();
-  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -77,7 +76,7 @@ const AddTask: React.FC = () => {
     }
     
     try {
-      const response = await axios.post(`${apiBaseUrl}/taskboard/add`, {
+      const response = await axios.post("https://digital-epcs.vercel.app/taskboard/add", {
         taskID: task.id,
         title: task.title,
         projectName: task.project,
