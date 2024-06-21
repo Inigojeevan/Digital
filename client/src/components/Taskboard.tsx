@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 import { useUser } from '@clerk/clerk-react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const TaskBoardContainer = styled.div`
   display: flex;
@@ -149,6 +150,7 @@ const TaskBoard: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const { user } = useUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -253,7 +255,7 @@ const TaskBoard: React.FC = () => {
           ))}
         </Tbody>
       </Table>
-      <AddTaskButton onClick={() => window.location.href = "/taskboard/add"}>Add Task</AddTaskButton>
+      <AddTaskButton onClick={() => navigate("/taskboard/add")}>Add Task</AddTaskButton>
       
       <Modal
         isOpen={isModalOpen}

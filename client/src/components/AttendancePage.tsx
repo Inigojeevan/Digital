@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useUser } from '@clerk/clerk-react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const Container = styled.div`
   display: flex;
@@ -109,6 +110,7 @@ const AttendancePage: React.FC = () => {
   const [isClockedIn, setIsClockedIn] = useState<boolean>(false);
   const [greeting, setGreeting] = useState<string>('');
   const [leaveDays, setLeaveDays] = useState<number>(1); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedIsClockedIn = localStorage.getItem('isClockedIn');
@@ -142,7 +144,7 @@ const AttendancePage: React.FC = () => {
   };
 
   const handleOnClickDashboard = () => {
-    window.location.href = "/timecard";
+    navigate("/timecard")
   }
 
   const handleLeave = async () => {
@@ -155,7 +157,7 @@ const AttendancePage: React.FC = () => {
         daysTaken: leaveDays
       });
       alert(`Leave balance updated: ${response.data.newLeaveBalance}`);
-      window.location.href = "/timecard";
+      navigate("/timecard")
     } catch (error) {
       console.error(error);
       alert('Failed to update leave balance');

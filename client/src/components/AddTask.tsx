@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useUser } from '@clerk/clerk-react';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const Container = styled.div`
   display: flex;
@@ -59,6 +60,7 @@ const AddTask: React.FC = () => {
   });
 
   const { user } = useUser();
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -93,7 +95,7 @@ const AddTask: React.FC = () => {
         priority: '',
         date: ''
       });
-      window.location.href = "/taskboard"; 
+      navigate("/taskboard")
     } catch (error) {
       console.error(error);
       alert('Failed to add task. Please try again.');
