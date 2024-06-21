@@ -63,7 +63,7 @@ const AddEventForm: React.FC = () => {
       };
 
       try {
-        const response = await fetch("https://digital-epcs.vercel.app//meetings/add", {
+        const response = await fetch("https://digital-epcs.vercel.app/meetings/add", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
