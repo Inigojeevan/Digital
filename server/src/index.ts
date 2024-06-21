@@ -13,7 +13,7 @@ const app: Express = express();
 const port = process.env.PORT;
 
 const corsOptions = {
-  origin: "https://digital-epcs-gc9p.vercel.app/",
+  origin: "https://digital-epcs-gc9p.vercel.app",
   optionsSuccessStatus: 200
 };
 
