@@ -43,7 +43,6 @@ const NavContainer = styled.div<NavContainerProps>`
   right: 0;
   background: #fff;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: ${({ open }) => (open ? "flex" : "none")};
   align-items: center;
 
