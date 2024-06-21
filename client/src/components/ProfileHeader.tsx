@@ -5,6 +5,10 @@ import { useClerk, useUser } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 
+interface NavContainerProps {
+  open: boolean;
+}
+
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
@@ -15,6 +19,7 @@ const HeaderContainer = styled.header`
 
   @media (max-width: 768px) {
     padding: 1rem;
+    justify-content: center;
   }
 `;
 
@@ -23,44 +28,30 @@ const LogoContainer = styled.div`
   align-items: center;
 `;
 
-const Logo = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-`;
-
 const LogoImage = styled.img`
   margin-right: 0.5rem;
+  height: 40px;
 `;
 
-const NavContainer = styled.div`
+const NavContainer = styled.div<NavContainerProps>`
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: ${({ open }) => (open ? "flex" : "none")};
   align-items: center;
-  gap: 2rem;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 0;
-  }
-`;
-
-const Nav = styled.nav<{ open: boolean }>`
-  display: flex;
-  gap: 2rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    right: 0;
-    background: white;
-    padding: 2rem;
-    display: ${({ open }) => (open ? "flex" : "none")};
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    align-items: center;
+  @media (min-width: 769px) {
+    position: static;
+    flex-direction: row;
+    gap: 2rem;
+    display: flex;
   }
 `;
 
@@ -74,7 +65,9 @@ const NavLink = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    padding: 1rem 0;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    text-align: center;
   }
 `;
 
@@ -120,21 +113,18 @@ const ProfileHeader: React.FC = () => {
     <HeaderContainer>
       <LogoContainer>
         <LogoImage src={logo} alt="Logo" />
-        <Logo>DigitalEPCS</Logo>
       </LogoContainer>
       <Hamburger onClick={() => setNavOpen(!navOpen)}>
         {navOpen ? <FaTimes /> : <FaBars />}
       </Hamburger>
-      <NavContainer>
-        <Nav open={navOpen}>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/timecard">Timecard</NavLink>
-          <NavLink to="/calendar">Calendar</NavLink>
-          <NavLink to="/taskboard">Taskboard</NavLink>
-          {isSignedIn && (
-            <Button onClick={handleLogoutClick}>Logout</Button>
-          )}
-        </Nav>
+      <NavContainer open={navOpen}>
+        <NavLink to="/" onClick={() => setNavOpen(false)}>Home</NavLink>
+        <NavLink to="/timecard" onClick={() => setNavOpen(false)}>Timecard</NavLink>
+        <NavLink to="/calendar" onClick={() => setNavOpen(false)}>Calendar</NavLink>
+        <NavLink to="/taskboard" onClick={() => setNavOpen(false)}>Taskboard</NavLink>
+        {isSignedIn && (
+          <Button onClick={handleLogoutClick}>Logout</Button>
+        )}
       </NavContainer>
     </HeaderContainer>
   );
