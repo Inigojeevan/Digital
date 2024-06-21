@@ -4,19 +4,39 @@ import headerImage from "../assets/header-image.png";
 
 const LandingContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 2rem 4rem;
+  padding: 2rem;
   background-color: #cadcfc;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+  }
 `;
 
 const TextContainer = styled.div`
-  max-width: 50%;
+  max-width: 100%;
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    max-width: 50%;
+    margin-bottom: 0;
+    text-align: left;
+  }
 `;
 
 const Title = styled.h1`
-  font-size: 4rem;
+  font-size: 2.5rem;
   color: #333;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    font-size: 4rem;
+  }
 `;
 
 const Highlight = styled.span`
@@ -27,12 +47,20 @@ const Highlight = styled.span`
 `;
 
 const Description = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #313030;
 `;
 
 const ImageContainer = styled.div`
-  max-width: 40%;
+  max-width: 100%;
+
+  @media (min-width: 768px) {
+    max-width: 40%;
+  }
+`;
+
+const Image = styled.img`
+  width: 100%;
 `;
 
 const LandingPage: React.FC = () => (
@@ -48,7 +76,7 @@ const LandingPage: React.FC = () => (
       </Description>
     </TextContainer>
     <ImageContainer>
-      <img src={headerImage} alt="Team" style={{ width: "100%" }} />
+      <Image src={headerImage} alt="Team" />
     </ImageContainer>
   </LandingContainer>
 );

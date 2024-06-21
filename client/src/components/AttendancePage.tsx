@@ -6,7 +6,15 @@ import { useNavigate } from 'react-router';
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   height: 100vh;
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
 `;
 
 const LeftPanel = styled.div`
@@ -17,6 +25,11 @@ const LeftPanel = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 const RightPanel = styled.div`
@@ -26,20 +39,31 @@ const RightPanel = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 2rem;
 `;
 
 const CurrentTime = styled.h1`
-  font-size: 4rem;
+  font-size: 3rem;
   margin: 0;
 `;
 
 const CurrentDate = styled.p`
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const Greeting = styled.h1`
-  font-size: 3rem;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+`;
+
+const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 `;
 
 const ClockInButton = styled.button`
@@ -50,28 +74,11 @@ const ClockInButton = styled.button`
   padding: 10px 20px;
   font-size: 1.5rem;
   cursor: pointer;
-  margin-top: 20px;
+  width: 100%;
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
     background-color: #00246b;
-    transform: translateY(-3px);
-  }
-`;
-
-const BackButton = styled.button`
-  background-color: #4c4c4c;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-
-  &:hover {
-    background-color: #333333;
     transform: translateY(-3px);
   }
 `;
@@ -84,7 +91,7 @@ const LeaveButton = styled.button`
   padding: 10px 20px;
   font-size: 1.5rem;
   cursor: pointer;
-  margin-top: 20px;
+  width: 100%;
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
@@ -94,7 +101,6 @@ const LeaveButton = styled.button`
 `;
 
 const LeaveInput = styled.input`
-  margin-top: 20px;
   padding: 10px;
   font-size: 1.2rem;
   border: 1px solid #ccc;
@@ -103,7 +109,22 @@ const LeaveInput = styled.input`
   text-align: center;
 `;
 
-//const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+const BackButton = styled.button`
+  background-color: #4c4c4c;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #333333;
+    transform: translateY(-3px);
+  }
+`;
 
 const AttendancePage: React.FC = () => {
   const { user } = useUser();
@@ -144,8 +165,8 @@ const AttendancePage: React.FC = () => {
   };
 
   const handleOnClickDashboard = () => {
-    navigate("/timecard")
-  }
+    navigate("/timecard");
+  };
 
   const handleLeave = async () => {
     const employeeID = user?.id;
@@ -157,12 +178,12 @@ const AttendancePage: React.FC = () => {
         daysTaken: leaveDays
       });
       alert(`Leave balance updated: ${response.data.newLeaveBalance}`);
-      navigate("/timecard")
+      navigate("/timecard");
     } catch (error) {
       console.error(error);
       alert('Failed to update leave balance');
     }
-  }
+  };
 
   const getCurrentTime = () => {
     const date = new Date();
@@ -186,17 +207,19 @@ const AttendancePage: React.FC = () => {
       </LeftPanel>
       <RightPanel>
         <Greeting>{greeting}, {user?.firstName || 'User'}!!</Greeting>
-        <ClockInButton onClick={handleClockInOut}>
-          {isClockedIn ? 'Clock Out' : 'Clock In'}
-        </ClockInButton>
-        <LeaveInput
-          type="number"
-          value={leaveDays}
-          onChange={(e) => setLeaveDays(parseInt(e.target.value))}
-          min="1"
-        />
-        <LeaveButton onClick={handleLeave}>Take Leave</LeaveButton>
-        <BackButton onClick={handleOnClickDashboard}>Back to Dashboard</BackButton>
+        <ButtonContainer>
+          <ClockInButton onClick={handleClockInOut}>
+            {isClockedIn ? 'Clock Out' : 'Clock In'}
+          </ClockInButton>
+          <LeaveInput
+            type="number"
+            value={leaveDays}
+            onChange={(e) => setLeaveDays(parseInt(e.target.value))}
+            min="1"
+          />
+          <LeaveButton onClick={handleLeave}>Take Leave</LeaveButton>
+          <BackButton onClick={handleOnClickDashboard}>Back to Dashboard</BackButton>
+        </ButtonContainer>
       </RightPanel>
     </Container>
   );

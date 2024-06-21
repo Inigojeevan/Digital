@@ -12,6 +12,10 @@ const HeaderContainer = styled.header`
   padding: 1rem 2rem;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const LogoContainer = styled.div`
@@ -36,6 +40,7 @@ const NavContainer = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 0;
   }
 `;
 
@@ -55,6 +60,7 @@ const Nav = styled.nav<{ open: boolean }>`
     padding: 2rem;
     display: ${({ open }) => (open ? "flex" : "none")};
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: center;
   }
 `;
 
@@ -65,6 +71,10 @@ const NavLink = styled(Link)`
   cursor: pointer;
   &:hover {
     color: #007bff;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 0;
   }
 `;
 
@@ -117,16 +127,14 @@ const ProfileHeader: React.FC = () => {
       </Hamburger>
       <NavContainer>
         <Nav open={navOpen}>
-        <NavLink to="/">Home</NavLink>
+          <NavLink to="/">Home</NavLink>
           <NavLink to="/timecard">Timecard</NavLink>
           <NavLink to="/calendar">Calendar</NavLink>
           <NavLink to="/taskboard">Taskboard</NavLink>
+          {isSignedIn && (
+            <Button onClick={handleLogoutClick}>Logout</Button>
+          )}
         </Nav>
-        {isSignedIn && (
-          <Button onClick={handleLogoutClick}>
-            Logout
-          </Button>
-        )}
       </NavContainer>
     </HeaderContainer>
   );
