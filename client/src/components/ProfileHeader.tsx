@@ -41,7 +41,7 @@ const NavContainer = styled.div<NavContainerProps>`
   top: 80px;
   left: 0;
   right: 0;
-  background: white;
+  background: #fff;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: ${({ open }) => (open ? "flex" : "none")};

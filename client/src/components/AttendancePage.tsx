@@ -6,7 +6,22 @@ import { useNavigate } from 'react-router';
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   height: 100vh;
+`;
+
+const TimerContainer = styled.div`
+  background-color: #00246b;
+  color: #d5e5ff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
 `;
 
 const LeftPanel = styled.div`
@@ -19,7 +34,6 @@ const LeftPanel = styled.div`
   justify-content: center;
 
   @media (max-width: 768px) {
-    flex: 0;
     display: none;
   }
 `;
@@ -183,6 +197,10 @@ const AttendancePage: React.FC = () => {
 
   return (
     <Container>
+      <TimerContainer>
+        <CurrentTime>{getCurrentTime()}</CurrentTime>
+        <CurrentDate>{getCurrentDate()}</CurrentDate>
+      </TimerContainer>
       <LeftPanel>
         <CurrentTime>{getCurrentTime()}</CurrentTime>
         <CurrentDate>{getCurrentDate()}</CurrentDate>
