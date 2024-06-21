@@ -9,7 +9,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #d3e4f7;
+  background-color: #cadcfc;
 `;
 
 const FormWrapper = styled.div`
