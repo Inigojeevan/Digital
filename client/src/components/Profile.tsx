@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useUser } from "@clerk/clerk-react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -83,6 +84,7 @@ const Profile: React.FC = () => {
   const [attendanceData, setAttendanceData] = useState<any>(null);
   const [leaveData, setLeaveData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -115,10 +117,6 @@ const Profile: React.FC = () => {
     return <div>Loading...</div>;
   }
 
-  const handleOnClick = () => {
-    window.location.href = "/attendance";
-  };
-
   return (
     <ProfileContainer>
       <EmployeeID>EmployeeID: {user ? user.id : "Loading..."}</EmployeeID>
@@ -134,7 +132,9 @@ const Profile: React.FC = () => {
           <SummaryDetail>days available</SummaryDetail>
         </SummaryCard>
       </SummaryContainer>
-      <AttendanceButton onClick={handleOnClick}>Attendance</AttendanceButton>
+      <AttendanceButton onClick={() => {
+        navigate("/attendance")
+      }}>Attendance</AttendanceButton>
     </ProfileContainer>
   );
 };
