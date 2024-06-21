@@ -5,10 +5,6 @@ import { useClerk, useUser } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 
-interface NavContainerProps {
-  open: boolean;
-}
-
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
@@ -19,7 +15,8 @@ const HeaderContainer = styled.header`
 
   @media (max-width: 768px) {
     padding: 1rem;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
@@ -33,25 +30,24 @@ const LogoImage = styled.img`
   height: 40px;
 `;
 
-const NavContainer = styled.div<NavContainerProps>`
+const NavContainer = styled.nav<{ open: boolean }>`
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  position: absolute;
-  top: 80px;
-  left: 0;
-  right: 0;
-  background: white;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: ${({ open }) => (open ? "flex" : "none")};
-  align-items: center;
+  gap: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
 
-  @media (min-width: 769px) {
-    position: static;
+  @media (max-width: 768px) {
     flex-direction: row;
-    gap: 2rem;
-    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 1rem;
+    display: ${({ open }) => (open ? "flex" : "none")};
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -65,9 +61,7 @@ const NavLink = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    padding: 0.5rem 1rem;
-    width: 100%;
-    text-align: center;
+    padding: 1rem;
   }
 `;
 
@@ -78,6 +72,7 @@ const Hamburger = styled.div`
 
   @media (max-width: 768px) {
     display: block;
+    margin-left: auto;
   }
 `;
 
@@ -95,7 +90,7 @@ const Button = styled.button`
 
   @media (max-width: 768px) {
     margin-top: 1rem;
-    width: 100%;
+    padding: 0.5rem 1rem;
   }
 `;
 

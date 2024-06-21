@@ -13,6 +13,12 @@ const HeaderContainer = styled.header`
   padding: 1rem 2rem;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const LogoContainer = styled.div`
@@ -20,42 +26,26 @@ const LogoContainer = styled.div`
   align-items: center;
 `;
 
-const Logo = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-`;
-
 const LogoImage = styled.img`
   margin-right: 0.5rem;
+  height: 40px; 
 `;
 
-const NavContainer = styled.div`
+const NavContainer = styled.nav<{ open: boolean }>`
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1rem;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
-
-const Nav = styled.nav<{ open: boolean }>`
-  display: flex;
-  gap: 2rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
+    flex-direction: ${({ open }) => (open ? "column" : "row")};
     position: absolute;
-    top: 80px;
-    left: 0;
-    right: 0;
+    top: 60px; 
+    right: 1rem;
     background: white;
-    padding: 2rem;
+    padding: 1rem;
     display: ${({ open }) => (open ? "flex" : "none")};
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
   }
 `;
 
@@ -67,15 +57,10 @@ const NavLink = styled(ScrollLink)`
   &:hover {
     color: #007bff;
   }
-`;
-
-const Hamburger = styled.div`
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
 
   @media (max-width: 768px) {
-    display: block;
+    text-align: center;
+    padding: 0.5rem 0;
   }
 `;
 
@@ -85,7 +70,23 @@ const StyledLink = styled(Link)`
   font-weight: 500;
   cursor: pointer;
   &:hover {
-    color: #0056b3; 
+    color: #0056b3;
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+`;
+
+const Hamburger = styled.div`
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
+    margin-left: auto;
   }
 `;
 
@@ -125,54 +126,29 @@ const Header: React.FC = () => {
     <HeaderContainer>
       <LogoContainer>
         <LogoImage src={logo} alt="Logo" />
-        <Logo>DigitalEPCS</Logo>
       </LogoContainer>
       <Hamburger onClick={() => setNavOpen(!navOpen)}>
         {navOpen ? <FaTimes /> : <FaBars />}
       </Hamburger>
-      <NavContainer>
-        <Nav open={navOpen}>
-          <NavLink to="about" smooth={true} duration={500}>About</NavLink>
-          <NavLink to="services" smooth={true} duration={500}>Services</NavLink>
-          <NavLink to="products" smooth={true} duration={500}>Products</NavLink>
-          {isSignedIn && (
-            <>
-              <StyledLink to="/timecard">
-                Profile
-              </StyledLink>
-            </>
-          )}
-        </Nav>
+      <NavContainer open={navOpen}>
+        <NavLink to="about" smooth={true} duration={500} onClick={() => setNavOpen(false)}>
+          About
+        </NavLink>
+        <NavLink to="services" smooth={true} duration={500} onClick={() => setNavOpen(false)}>
+          Services
+        </NavLink>
+        <NavLink to="products" smooth={true} duration={500} onClick={() => setNavOpen(false)}>
+          Products
+        </NavLink>
+        {isSignedIn && (
+          <StyledLink to="/profile" onClick={() => setNavOpen(false)}>
+            Profile
+          </StyledLink>
+        )}
         {isSignedIn ? (
-          <>
-            <Button
-              onClick={handleLogoutClick}
-              style={{ display: navOpen ? "block" : "none" }}
-            >
-              Logout
-            </Button>
-            <Button
-              onClick={handleLogoutClick}
-              style={{ display: navOpen ? "none" : "block" }}
-            >
-              Logout
-            </Button>
-          </>
+          <Button onClick={handleLogoutClick}>Logout</Button>
         ) : (
-          <>
-            <Button
-              onClick={handleLoginClick}
-              style={{ display: navOpen ? "block" : "none" }}
-            >
-              Login
-            </Button>
-            <Button
-              onClick={handleLoginClick}
-              style={{ display: navOpen ? "none" : "block" }}
-            >
-              Login
-            </Button>
-          </>
+          <Button onClick={handleLoginClick}>Login</Button>
         )}
       </NavContainer>
     </HeaderContainer>
