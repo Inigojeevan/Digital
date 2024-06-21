@@ -17,6 +17,11 @@ const LeftPanel = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    flex: 0;
+    display: none;
+  }
 `;
 
 const RightPanel = styled.div`
@@ -59,23 +64,6 @@ const ClockInButton = styled.button`
   }
 `;
 
-const BackButton = styled.button`
-  background-color: #4c4c4c;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-
-  &:hover {
-    background-color: #333333;
-    transform: translateY(-3px);
-  }
-`;
-
 const LeaveButton = styled.button`
   background-color: black;
   color: #fff;
@@ -103,7 +91,22 @@ const LeaveInput = styled.input`
   text-align: center;
 `;
 
-//const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+const BackButton = styled.button`
+  background-color: #4c4c4c;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #333333;
+    transform: translateY(-3px);
+  }
+`;
 
 const AttendancePage: React.FC = () => {
   const { user } = useUser();
